@@ -1,0 +1,63 @@
+<h1>Polling Unit Search</h1>
+
+<form method="get" action="<%= url('/') %>" class="global-search-form">
+  <div class="search-section-box">
+    <div class="inline-search-box">
+      <label for="pu-number">Search</label>
+      <input type="text" id="pu-number" name="q" value="<%= params[:q] %>" placeholder="Your poll unit number">
+      <input type="submit" value="Search" class="button">
+    </div>
+  </div>
+</form>
+
+<div class="global-search-results">
+
+  <% if @area %>
+
+
+  <p>Best match is the local government area "<%= @area[:name] %>" with poll unit number '<%= @area[:codes][:poll_unit] %>'</p>
+
+
+  <h3>State</h3>
+  <p>
+  <a href="/place/abia/">Abia</a>,
+
+  current governor <a href="/person/okezie-ikpeazu/">Okezie Ikpeazu </a>
+
+  </p>
+
+
+  <h3>Overlapping Federal Constituencies</h3>
+
+  <ul>
+
+    <li><a href="/place/aba-north-aba-south/">Aba North/Aba South</a>,
+
+      no current representative
+
+    </li>
+
+  </ul>
+
+  <h3>Overlapping Senatorial Districts</h3>
+
+  <ul>
+
+    <li><a href="/place/abia-south/">ABIA SOUTH</a>,
+
+      current senator <a href="/person/abaribe-enyinnaya-harcourt/">ABARIBE ENYINNAYA HARCOURT</a>
+
+    </li>
+
+  </ul>
+
+<% elsif params[:q] %>
+
+  <p>No results for '<%= params[:q] %>'.</p>
+
+<% else %>
+
+  <p>Please enter a search term in the form above.</p>
+
+<% end %>
+</div>
