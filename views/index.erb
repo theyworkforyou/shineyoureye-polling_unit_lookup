@@ -15,7 +15,7 @@
   <% if @area %>
 
 
-  <p>Best match is the local government area "<%= @area[:name] %>" with poll unit number '<%= @area[:codes][:poll_unit] %>'</p>
+    <p>Best match is the <%= @area[:type_name] %> "<%= @area[:name] %>" with poll unit number '<%= @area[:codes][:poll_unit] %>'</p>
 
 
   <h3>State</h3>

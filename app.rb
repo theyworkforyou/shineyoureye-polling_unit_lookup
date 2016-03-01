@@ -23,7 +23,8 @@ end
 
 get '/' do
   if params[:q]
-    @area = pu_lookup(params[:q])
+    @result = pu_lookup(params[:q])
+    @area = @result[:area]
   end
   render_into_jekyll_layout erb(:index), 'disable_breadcrumbs' => true
 end
