@@ -6,6 +6,7 @@ require 'json'
 configure do
   set :jekyll_site_path, 'shineyoureye'
   set :pu_lookup_api_url, 'https://pu-lookup.herokuapp.com'
+  jekyll_site.config['url'] ||= 'http://staging.shineyoureye.org'
 end
 
 helpers do
