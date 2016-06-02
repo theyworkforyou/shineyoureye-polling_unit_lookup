@@ -6,6 +6,5 @@ source 'https://rubygems.org' do
   gem 'sinatra'
   gem 'rest-client'
   gem 'sinatra-jekyll'
-  gem 'puma'
   gem 'pry'
 end
