@@ -19,6 +19,7 @@ GEM
     domain_name (0.5.20160128)
       unf (>= 0.0.5, < 1.0.0)
     ffi (1.9.10)
+    fuzzy_match (2.1.0)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     jekyll (3.1.2)
@@ -96,6 +97,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  fuzzy_match!
   jekyll
   jekyll-compass
   jekyll-everypolitician
