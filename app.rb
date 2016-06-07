@@ -7,6 +7,8 @@ configure do
   set :jekyll_site_path, 'shineyoureye'
   set :pu_lookup_api_url, 'https://pu-lookup.herokuapp.com'
   jekyll_site.config['url'] ||= 'http://staging.shineyoureye.org'
+  # Run generators for Jekyll
+  jekyll_site.generate
 end
 
 helpers do
@@ -26,6 +28,12 @@ get '/' do
   if params[:q]
     @result = pu_lookup(params[:q])
     @area = @result[:area]
+    @state = @result[:states].first
+    @governor = jekyll_site.collections['executive_governors'].docs.find_all do |d|
+      d['area'] == @state[:name]
+    end.reject do |d|
+      d['end_date'] && Date.parse(d['end_date']) < Date.today
+    end.first
   end
   render_into_jekyll_layout erb(:index), 'disable_breadcrumbs' => true
 end

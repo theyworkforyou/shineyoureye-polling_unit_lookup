@@ -17,14 +17,17 @@
 
     <p>Best match is the <%= @area[:type_name] %> "<%= @area[:name] %>" with poll unit number '<%= @area[:codes][:poll_unit] %>'</p>
 
-
-  <h3>State</h3>
-  <p>
-  <a href="/place/abia/">Abia</a>,
-
-  current governor <a href="/person/okezie-ikpeazu/">Okezie Ikpeazu </a>
-
-  </p>
+    <% if @state %>
+      <h3>State</h3>
+      <p>
+      <%= @state[:name] %>,
+      <% if @governor %>
+        current governor <a href="<%= jekyll_site.config['url'] + @governor.url %>"><%= @governor['name'] %></a>
+      <% else %>
+        no current governor
+      <% end %>
+      </p>
+    <% end %>
 
 
   <h3>Overlapping Federal Constituencies</h3>
