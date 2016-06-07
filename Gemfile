@@ -7,4 +7,5 @@ source 'https://rubygems.org' do
   gem 'rest-client'
   gem 'sinatra-jekyll'
   gem 'pry'
+  gem 'fuzzy_match'
 end
