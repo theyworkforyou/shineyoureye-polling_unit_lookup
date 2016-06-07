@@ -33,25 +33,42 @@
   <h3>Overlapping Federal Constituencies</h3>
 
   <ul>
+    <% @federal_constituencies.each do |federal_constituency| %>
 
-    <li><a href="/place/aba-north-aba-south/">Aba North/Aba South</a>,
+      <li><a href="<%= jekyll_site.config['url'] + federal_constituency.url %>"><%= federal_constituency['name'] %></a>,
 
-      no current representative
+        <% if federal_constituency['memberships'].any? %>
+          <% federal_constituency['memberships'].each do |membership| %>
+            current representative <a href="<%= jekyll_site.config['url'] + membership['person'].url %>"><%= membership['person']['name'] %></a>
+          <% end %>
+        <% else %>
+          no current representative
+        <% end %>
 
-    </li>
+      </li>
+
+    <% end %>
 
   </ul>
 
   <h3>Overlapping Senatorial Districts</h3>
 
   <ul>
+    <% @senatorial_districts.each do |senatorial_district| %>
 
-    <li><a href="/place/abia-south/">ABIA SOUTH</a>,
+      <li><a href="<%= jekyll_site.config['url'] + senatorial_district.url %>"><%= senatorial_district['name'] %></a>,
 
-      current senator <a href="/person/abaribe-enyinnaya-harcourt/">ABARIBE ENYINNAYA HARCOURT</a>
+        <% if senatorial_district['memberships'].any? %>
+          <% senatorial_district['memberships'].each do |membership| %>
+            current senator <a href="<%= jekyll_site.config['url'] + membership['person'].url %>"><%= membership['person']['name'] %></a>
+          <% end %>
+        <% else %>
+          no current senator
+        <% end %>
 
-    </li>
+      </li>
 
+    <% end %>
   </ul>
 
 <% elsif params[:q] %>
